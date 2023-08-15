@@ -12,9 +12,7 @@ pub struct bet {
 
 pub struct autoBet {
     pub prediction: Prediction,
-    pub initial_amount : Uint128,
-    pub increase_percent: 
-
+    pub initial_amount: Uint128,
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
