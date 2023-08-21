@@ -1,16 +1,15 @@
-use crate::state::Prediction;
+use crate::state::{bet, Prediction};
 use cosmwasm_schema::{cw_serde, QueryResponses};
-use cosmwasm_std::Uint128;
+use cosmwasm_std::{Coin, Uint128};
 
 #[cw_serde]
 pub struct InstantiateMsg {}
 
 #[cw_serde]
 pub enum ExecuteMsg {
-    FlipCoin {
-        prediction: Prediction,
-        amount: Uint128,
-    },
+    FlipCoin {},
+
+    TakeBet { bet: bet },
 }
 
 #[cw_serde]

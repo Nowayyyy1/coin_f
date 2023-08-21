@@ -13,6 +13,10 @@ pub struct bet {
 pub struct autoBet {
     pub prediction: Prediction,
     pub initial_amount: Uint128,
+    pub increase_percentage_upon_win: Option<u8>,
+    pub decrese_percentage_upon_loose: Option<u8>,
+    pub stoploss: Option<Uint128>,
+    pub target: Option<u8>,
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
@@ -35,4 +39,17 @@ impl std::fmt::Display for FlipResult {
     }
 }
 
+#[derive(Serialize, Deserialize, Clone, Debug, PartialEq, JsonSchema)]
+
+pub struct Game {
+    pub owner: Addr,
+    pub seed: String,
+    pub last_game_time: u64,
+    pub gameId: u128,
+    pub bet: bet,
+}
+
+pub const GAME: Item<Game> = Item::new("game");
 pub const GAMEID: Map<Addr, Vec<u128>> = Map::new("gameID");
+
+pub const USERBET: Map<Addr, bet> = Map::new("user_bet");
